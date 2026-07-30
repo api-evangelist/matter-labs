@@ -1,7 +1,21 @@
 aid: matter-labs
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1
 name: Matter Labs
-description: Matter Labs is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Matter Labs is the company behind ZKsync, a family of zero-knowledge (ZK) rollup Layer 2
+  scaling solutions for Ethereum. Its flagship network, ZKsync Era, is an EVM-compatible ZK
+  rollup that inherits Ethereum security while offering low fees and high throughput. For
+  developers ZKsync Era exposes a public, Ethereum-compatible JSON-RPC API (the standard
+  eth_* namespace) extended with a ZKsync-specific zks_* namespace covering L1 batches,
+  L1<->L2 bridging, fee and gas-per-pubdata estimation, token discovery, and Merkle proofs,
+  plus a WebSocket pub/sub surface. First-party SDKs ship for JavaScript/TypeScript
+  (zksync-ethers), Python (zksync2), and Go (zksync2-go), alongside a zksync-cli developer
+  tool and native account-abstraction support. Matter Labs also builds the ZK Stack for
+  launching sovereign ZK chains. The company is backed by a16z.
 url: https://raw.githubusercontent.com/api-evangelist/matter-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,14 +23,96 @@ x-backed-by:
 - a16z
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/matter-labs
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Blockchain
+- Ethereum
+- Layer 2
+- Zero-Knowledge Proofs
+- Rollup
+- JSON-RPC
+- Web3
+- Cryptography
+- Scaling
+apis:
+- name: ZKsync Era JSON-RPC API
+  description: >-
+    Ethereum-compatible JSON-RPC 2.0 API for the ZKsync Era ZK rollup. Standard eth_*
+    methods plus the ZKsync-specific zks_* namespace (batches, bridging, fee estimation,
+    proofs) over HTTPS POST, with a WebSocket pub/sub surface for subscriptions.
+  humanURL: https://docs.zksync.io/zksync-protocol/api
+  baseURL: https://mainnet.era.zksync.dev
+  tags:
+  - JSON-RPC
+  - Blockchain
+  - Ethereum
+  - Layer 2
+  properties:
+  - type: Documentation
+    url: https://docs.zksync.io/zksync-protocol/api
+  - type: APIReference
+    url: https://docs.zksync.io/zksync-protocol/api/zks-rpc
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DomainSecurity
+  url: security/matter-labs-domain-security.yml
+- type: Website
+  url: https://matterlabs.com/
+- type: DeveloperPortal
+  url: https://docs.zksync.io/
+- type: Documentation
+  url: https://docs.zksync.io/
+- type: APIReference
+  url: https://docs.zksync.io/zksync-protocol/api
+- type: Quickstart
+  url: https://docs.zksync.io/zksync-network/quick-start/build-a-frontend
+- type: GitHubOrganization
+  url: https://github.com/matter-labs
+- type: TermsOfService
+  url: https://www.zksync.io/terms
+- type: PrivacyPolicy
+  url: https://www.zksync.io/privacy
+- type: Packages
+  url: packages/matter-labs-packages.yml
+- type: SDKs
+  url: packages/matter-labs-packages.yml
+- type: CLI
+  url: cli/matter-labs-cli.yml
+- type: Authentication
+  url: authentication/matter-labs-authentication.yml
+- type: Conventions
+  url: conventions/matter-labs-conventions.yml
+- type: Conformance
+  url: conformance/matter-labs-conformance.yml
+- type: ErrorCatalog
+  url: errors/matter-labs-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/matter-labs-lifecycle.yml
+- type: WellKnown
+  url: well-known/matter-labs-well-known.yml
+- type: MCPServer
+  url: mcp/matter-labs-mcp.yml
+- type: LLMsTxt
+  url: llms/matter-labs-llms.txt
+- type: AsyncAPI
+  url: asyncapi/matter-labs-pubsub-asyncapi.yml
