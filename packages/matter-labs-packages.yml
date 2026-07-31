@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: searched
+source: npm, PyPI, pkg.go.dev, github.com/zksync-sdk
+packages:
+  - language: javascript
+    registry: npm
+    name: zksync-ethers
+    url: https://www.npmjs.com/package/zksync-ethers
+    install: npm install zksync-ethers ethers
+    version: 6.21.2
+    repository: https://github.com/zksync-sdk/zksync-ethers
+    description: Web3 library (ethers.js v6 extension) for interacting with ZKsync Era Layer 2.
+    official: true
+  - language: javascript
+    registry: npm
+    name: zksync-web3
+    url: https://www.npmjs.com/package/zksync-web3
+    install: npm install zksync-web3
+    version: 0.17.1
+    description: Predecessor ethers.js v5 based ZKsync library (superseded by zksync-ethers).
+    official: true
+    deprecated: true
+  - language: python
+    registry: pypi
+    name: zksync2
+    url: https://pypi.org/project/zksync2/
+    install: pip install zksync2
+    version: 2.0.0
+    repository: https://github.com/zksync-sdk/zksync2-python
+    description: ZKsync Era Python client SDK.
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/zksync-sdk/zksync2-go
+    url: https://pkg.go.dev/github.com/zksync-sdk/zksync2-go
+    install: go get github.com/zksync-sdk/zksync2-go
+    repository: https://github.com/zksync-sdk/zksync2-go
+    description: ZKsync Era Go client SDK.
+    official: true
+  - language: javascript
+    registry: npm
+    name: zksync-cli
+    url: https://www.npmjs.com/package/zksync-cli
+    install: npx zksync-cli
+    version: 1.13.0
+    repository: https://github.com/matter-labs/zksync-cli
+    description: CLI to scaffold, develop and interact with the ZKsync network. Cataloged in cli/.
+    official: true
+  - language: javascript
+    registry: npm
+    name: zksync-sso
+    url: https://github.com/matter-labs/zksync-sso
+    install: npm install zksync-sso
+    repository: https://github.com/matter-labs/zksync-sso
+    description: ZKsync SSO SDK for smart-account / passkey based authentication.
+    official: true
+notes: >-
+  First-party SDKs are published under the zksync-sdk GitHub organization (a Matter Labs
+  org) and matter-labs. The ZKsync Era API is a public JSON-RPC endpoint; SDKs wrap the
+  eth_* and zks_* namespaces plus L1<->L2 bridging helpers.

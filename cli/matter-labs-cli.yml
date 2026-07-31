@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/package/zksync-cli
+cli:
+  name: zksync-cli
+  version: 1.13.0
+  repository: https://github.com/matter-labs/zksync-cli
+  docs: https://docs.zksync.io/zksync-era/tooling/zksync-cli
+  official: true
+  install:
+    - method: npx
+      command: npx zksync-cli
+    - method: npm
+      command: npm install -g zksync-cli
+  command_groups:
+    - group: create
+      description: Scaffold new projects from templates (frontend, contracts, scripting).
+      commands:
+        - zksync-cli create
+    - group: dev
+      description: Manage a local in-memory / dockerized ZKsync development node and companion services.
+      commands:
+        - zksync-cli dev start
+        - zksync-cli dev stop
+        - zksync-cli dev config
+    - group: contract
+      description: Read from and write to deployed contracts on ZKsync.
+      commands:
+        - zksync-cli contract read
+        - zksync-cli contract write
+    - group: transaction
+      description: Inspect transaction information.
+      commands:
+        - zksync-cli transaction info
+    - group: wallet
+      description: Manage balances and transfer tokens on ZKsync.
+      commands:
+        - zksync-cli wallet balance
+        - zksync-cli wallet transfer
+    - group: bridge
+      description: Deposit and withdraw funds between Ethereum (L1) and ZKsync (L2).
+      commands:
+        - zksync-cli bridge deposit
+        - zksync-cli bridge withdraw
+        - zksync-cli bridge withdraw-finalize

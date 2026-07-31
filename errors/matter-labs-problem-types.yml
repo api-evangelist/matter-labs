@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: derived
+source: JSON-RPC 2.0 spec + EIP-1474 (Ethereum RPC) as implemented by ZKsync Era
+format: json-rpc-2.0
+envelope:
+  shape: '{ "jsonrpc": "2.0", "id": <id>, "error": { "code": <int>, "message": <string>, "data": <any> } }'
+problems:
+  - code: -32700
+    title: Parse error
+    meaning: Invalid JSON was received by the server.
+  - code: -32600
+    title: Invalid request
+    meaning: The JSON sent is not a valid JSON-RPC 2.0 Request object.
+  - code: -32601
+    title: Method not found
+    meaning: The requested method does not exist or is not supported by this endpoint.
+  - code: -32602
+    title: Invalid params
+    meaning: Invalid method parameters (wrong type/count/encoding).
+  - code: -32603
+    title: Internal error
+    meaning: Internal JSON-RPC / node error.
+  - code: -32000
+    title: Server error (execution / reverted)
+    meaning: >-
+      Generic server error space (-32000 to -32099). Used for transaction execution
+      failures, reverts (with revert reason in error.data), nonce issues, insufficient
+      funds, and gas-estimation failures. Per EIP-1474.
+  - code: 3
+    title: Execution reverted
+    meaning: Contract call reverted; ABI-encoded revert data returned in error.data.
+notes: >-
+  ZKsync Era follows Ethereum JSON-RPC (EIP-1474) error semantics; there is no
+  application/problem+json (RFC 9457) surface. Execution-revert details (including custom
+  Solidity errors) are returned in the error.data field. Derived from the standard;
+  ZKsync does not publish a distinct numeric error-code registry beyond these.

@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.zksync.io/zksync-protocol/api
+summary:
+  types: [none]
+  api_key_in: []
+  oauth2_flows: []
+schemes:
+  - name: public-rpc
+    type: none
+    description: >-
+      The ZKsync Era JSON-RPC endpoints (mainnet.era.zksync.dev, sepolia.era.zksync.dev)
+      are public and require no API key, token, or OAuth. Access control is economic
+      (transactions must be signed with an Ethereum ECDSA / EIP-712 key and pay gas), not
+      an API credential. Higher-throughput / dedicated access is offered by third-party RPC
+      providers (e.g. Alchemy, QuickNode, Chainstack) under their own API keys, not by
+      Matter Labs.
+    sources: [docs.zksync.io/zksync-protocol/api]
+transaction_signing:
+  scheme: ECDSA / EIP-712
+  note: >-
+    Write operations (eth_sendRawTransaction, zks_sendRawTransactionWithDetailedOutput)
+    require a transaction signed by the sender's Ethereum private key; ZKsync also supports
+    native account abstraction (custom signature schemes) and paymasters.

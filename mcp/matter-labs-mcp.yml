@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: https://docs.zksync.io/zksync-protocol/api/zks-rpc
+server:
+  name: matter-labs-zksync
+  transport: http
+  url: null
+notes: >-
+  No official Matter Labs-hosted MCP server was found. This is a CANDIDATE tool list
+  derived from the documented ZKsync Era JSON-RPC methods (a subset of the eth_* namespace
+  plus the ZKsync-specific zks_* namespace). Each tool maps to a real, documented RPC
+  method; a server would forward calls to https://mainnet.era.zksync.dev (or the Sepolia
+  endpoint).
+tools:
+  - name: eth_chainId
+    description: Return the L2 chain id (324 mainnet / 300 sepolia).
+    source_operation: eth_chainId
+  - name: eth_blockNumber
+    description: Return the number of the most recent L2 block.
+    source_operation: eth_blockNumber
+  - name: eth_getBalance
+    description: Return the balance of an account at a given block.
+    source_operation: eth_getBalance
+  - name: eth_call
+    description: Execute a read-only contract call.
+    source_operation: eth_call
+  - name: eth_getTransactionReceipt
+    description: Return the receipt for a transaction hash.
+    source_operation: eth_getTransactionReceipt
+  - name: zks_estimateFee
+    description: Estimate the full fee (gas + gas-per-pubdata) for a transaction.
+    source_operation: zks_estimateFee
+  - name: zks_getBlockDetails
+    description: Return ZKsync-specific details for an L2 block.
+    source_operation: zks_getBlockDetails
+  - name: zks_getTransactionDetails
+    description: Return ZKsync-specific details (status, fee, L1 batch) for a transaction.
+    source_operation: zks_getTransactionDetails
+  - name: zks_getL1BatchDetails
+    description: Return details of an L1 batch by number.
+    source_operation: zks_getL1BatchDetails
+  - name: zks_getBridgeContracts
+    description: Return the default L1 and L2 bridge contract addresses.
+    source_operation: zks_getBridgeContracts
+  - name: zks_getAllAccountBalances
+    description: Return all token balances for an account.
+    source_operation: zks_getAllAccountBalances
+  - name: zks_getConfirmedTokens
+    description: Return the list of tokens supported on ZKsync Era.
+    source_operation: zks_getConfirmedTokens

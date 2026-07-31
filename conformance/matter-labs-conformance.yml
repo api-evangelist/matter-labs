@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.zksync.io/zksync-protocol/api (namespaces + encoding conventions)
+standards:
+  - id: json-rpc-2.0
+    conforms: true
+    evidence: All ZKsync Era API methods use the JSON-RPC 2.0 request/response envelope.
+  - id: ethereum-json-rpc
+    conforms: true
+    evidence: eth_* namespace implements the standard Ethereum JSON-RPC method set.
+  - id: eip-1474
+    conforms: true
+    evidence: Remote procedure call spec — hex quantity/data encoding and error codes followed.
+  - id: eip-712
+    conforms: true
+    evidence: Typed structured data signing used for ZKsync transactions and account abstraction.
+  - id: eip-1193
+    conforms: true
+    evidence: Provider JS API compatibility via zksync-ethers / EIP-1193 providers.
+  - id: eip-4337-style-account-abstraction
+    conforms: partial
+    evidence: >-
+      ZKsync ships native (protocol-level) account abstraction rather than the EIP-4337
+      mempool bundler model; smart-account semantics overlap but the mechanism differs.
+  - id: oauth2
+    conforms: false
+    evidence: Public RPC requires no OAuth; no securitySchemes.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use JSON-RPC 2.0 error objects, not application/problem+json.
+notes: >-
+  Derived from the published API conventions; ZKsync Era targets Ethereum JSON-RPC
+  equivalence so existing Ethereum tooling works against it. No published third-party
+  security certification program (SOC 2 / ISO 27001) was found for the RPC service, so no
+  Compliance pointer is emitted.

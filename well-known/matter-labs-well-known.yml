@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of /.well-known/* on Matter Labs / ZKsync hosts
+hosts:
+  - host: https://matterlabs.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+  - host: https://www.zksync.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://mainnet.era.zksync.dev
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+notes: >-
+  No /.well-known/ discovery documents are published on the company site, product site, or
+  the ZKsync Era JSON-RPC hosts. The public RPC endpoints require no OAuth/OIDC, so no
+  openid-configuration or oauth-authorization-server surface exists. Absence recorded as
+  valid data; no raw files saved.

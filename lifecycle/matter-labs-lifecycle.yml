@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.zksync.io/zksync-protocol
+versioning:
+  scheme: protocol-version
+  mechanism: >-
+    ZKsync Era exposes the live protocol version via the zks_getProtocolVersion JSON-RPC
+    method and the semantic protocol version through zks_getGenesis. The RPC surface itself
+    tracks Ethereum JSON-RPC equivalence rather than a numbered API version in the URL.
+  query_method: zks_getProtocolVersion
+  docs: https://docs.zksync.io/zksync-protocol/api/zks-rpc
+deprecation:
+  policy_url: null
+  note: >-
+    No formal API deprecation-policy page found. At the SDK level the legacy zksync-web3
+    JavaScript library is deprecated in favour of zksync-ethers, but this is an SDK
+    lifecycle note, not an RPC endpoint sunset policy.
+status_page:
+  url: null
+  note: >-
+    No first-party ZKsync status page was verified (zksync.statuspage.io redirects to the
+    statuspage.io marketing home; status.zksync.io does not resolve). Network health is
+    commonly monitored via the block explorer and third-party RPC providers.
+networks:
+  - name: ZKsync Era Mainnet
+    chain_id: 324
+    chain_id_hex: '0x144'
+    rpc: https://mainnet.era.zksync.dev
+  - name: ZKsync Era Sepolia Testnet
+    chain_id: 300
+    chain_id_hex: '0x12c'
+    rpc: https://sepolia.era.zksync.dev
+    verified_live: true

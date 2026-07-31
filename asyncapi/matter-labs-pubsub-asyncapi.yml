@@ -1,0 +1,59 @@
+asyncapi: 3.0.0
+# generated: '2026-07-20'
+# method: generated
+# source: https://docs.zksync.io/zksync-protocol/api/pub-sub-rpc
+info:
+  title: ZKsync Era Pub/Sub (WebSocket) API
+  version: '1.0.0'
+  description: >-
+    Generated from the ZKsync Era pub-sub JSON-RPC documentation. ZKsync Era supports the
+    Ethereum-style eth_subscribe / eth_unsubscribe subscription model over WebSocket. This
+    is a faithful description of the documented subscription channels, not a provider-
+    published AsyncAPI. Subscribe by sending {"jsonrpc":"2.0","id":1,"method":"eth_subscribe",
+    "params":[<subscription_type>, ...]} over the WebSocket connection; notifications arrive
+    as eth_subscription messages.
+servers:
+  mainnet:
+    host: mainnet.era.zksync.dev
+    pathname: /ws
+    protocol: wss
+    description: ZKsync Era Mainnet WebSocket endpoint (chain id 324).
+  sepolia:
+    host: sepolia.era.zksync.dev
+    pathname: /ws
+    protocol: wss
+    description: ZKsync Era Sepolia Testnet WebSocket endpoint (chain id 300).
+channels:
+  newHeads:
+    address: newHeads
+    description: Emits a notification for each new block header added to the chain.
+    messages:
+      newHead:
+        summary: New block header.
+  logs:
+    address: logs
+    description: >-
+      Emits logs matching the supplied filter (address and topics) as they are included
+      in new blocks.
+    messages:
+      log:
+        summary: Matching event log.
+  newPendingTransactions:
+    address: newPendingTransactions
+    description: Emits the hash of each new pending transaction seen by the node.
+    messages:
+      pendingTx:
+        summary: Pending transaction hash.
+operations:
+  subscribeNewHeads:
+    action: receive
+    channel:
+      $ref: '#/channels/newHeads'
+  subscribeLogs:
+    action: receive
+    channel:
+      $ref: '#/channels/logs'
+  subscribeNewPendingTransactions:
+    action: receive
+    channel:
+      $ref: '#/channels/newPendingTransactions'

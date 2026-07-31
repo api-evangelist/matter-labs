@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.zksync.io/zksync-protocol/api/conventions
+api_style: JSON-RPC 2.0 over HTTP POST (and WebSocket for pub/sub)
+namespaces:
+  - name: eth
+    description: Standard Ethereum JSON-RPC namespace (EIP-1474 compatible subset).
+    docs: https://docs.zksync.io/zksync-protocol/api/ethereum-rpc
+  - name: zks
+    description: ZKsync-specific extensions (batches, bridging, fee estimation, proofs).
+    docs: https://docs.zksync.io/zksync-protocol/api/zks-rpc
+  - name: debug
+    description: Tracing / debug methods.
+    docs: https://docs.zksync.io/zksync-protocol/api/debug-rpc
+  - name: pubsub
+    description: WebSocket subscriptions (eth_subscribe / eth_unsubscribe).
+    docs: https://docs.zksync.io/zksync-protocol/api/pub-sub-rpc
+encoding:
+  request: JSON-RPC 2.0 envelope { jsonrpc, id, method, params }
+  quantities: hex-encoded (0x-prefixed) integers, per Ethereum EIP-1474
+  data: 0x-prefixed hex byte strings
+  batch: supported (send an array of JSON-RPC request objects)
+idempotency:
+  supported: false
+  mechanism: >-
+    No Idempotency-Key header. Write safety is provided by the account nonce: a signed
+    transaction is uniquely identified by its hash and can only be included once, so
+    re-submitting the same signed raw transaction is inherently idempotent at the protocol
+    level rather than via an API convention.
+pagination:
+  style: block-range
+  note: >-
+    Log/history queries (eth_getLogs, zks_getL1BatchBlockRange) are bounded by explicit
+    fromBlock/toBlock (or batch-number) ranges rather than cursor tokens.
+error_envelope:
+  format: JSON-RPC 2.0 error object { code, message, data }
+  reference: conventions follow Ethereum JSON-RPC error semantics (EIP-1474)
+rate_limiting:
+  signaled: partial
+  note: >-
+    The free public endpoints are rate limited (HTTP 429 on excess), but Matter Labs does
+    not publish exact per-key limits; production workloads are expected to use a dedicated
+    RPC provider. No standardized RateLimit-* response headers are documented.
+cross_reference:
+  errors: errors/matter-labs-problem-types.yml
+  authentication: authentication/matter-labs-authentication.yml
+  lifecycle: lifecycle/matter-labs-lifecycle.yml
+  events: asyncapi/matter-labs-pubsub-asyncapi.yml
