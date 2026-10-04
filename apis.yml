@@ -61,6 +61,7 @@ tags:
 - Web3
 - Cryptography
 - Scaling
+- Real-Time
 apis:
 - name: ZKsync Era JSON-RPC API
   description: >-
